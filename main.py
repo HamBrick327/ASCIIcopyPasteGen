@@ -54,7 +54,7 @@ for i in range(len(rgb)):
         print(rgb[i][j])
 
         try:
-            rgb[i][j] = ytisned[int(rgb[i][j] * scuffedMap)]
+            rgb[i][j] = density[int(rgb[i][j] * scuffedMap)]
         except:
             pass
         write += str(rgb[i][j])
