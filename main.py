@@ -1,6 +1,8 @@
 import cv2
 import sys
 
+from numpy import shape
+
 ## variable for the final generated ascii image
 generated = []
 rgb = []
@@ -8,10 +10,12 @@ rgb = []
 ## this is the number used to map the brightness of the image to the brightness array
 scuffedMap = 0.11372549019
 
+## initialize img
+img = None
 
 # define an object containing an image
 try:
-    img = cv2.imread(sys.argv[1])
+    img = cv2.imread(sys.argv[1], 0)
 except:
     img = cv2.imread(
         "./rick-astley.png", 0
@@ -22,7 +26,10 @@ log = open("log.txt", "w")
 output = open("output.txt", "w")
 
 # resize the image for optimal ascii conversion
-resize = cv2.resize(img, (0, 0), fx=0.1, fy=0.1)
+## pretent img has vaules now
+resize = cv2.resize(
+    img, (int(img.shape[1] * 0.1), int(img.shape[0] * 0.1)), fx=0.1, fy=0.1
+)
 ## print the size of the array that is the loaded image
 
 """
